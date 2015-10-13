@@ -100,7 +100,7 @@ class consultarForm {
                 $atributos ['id'] = $esteCampo;
                 $atributos ["estilo"] = "jqueryui";
                 $atributos ['tipoEtiqueta'] = 'inicio';
-                $atributos ["leyenda"] = "Perfiles de Usuario";
+                $atributos ["leyenda"] = "Roles de Usuario";
                 echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
                 unset ( $atributos );
                 {	
@@ -241,7 +241,7 @@ class consultarForm {
                     echo "<thead>
                             <tr align='center'>
                                 <th>Subsistema</th>
-                                <th>Perfil</th>
+                                <th>Rol</th>
                                 <th>Fecha Registro</th>
                                 <th>Fecha Caduca</th>                    
                                 <th>Estado</th>

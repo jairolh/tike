@@ -132,7 +132,9 @@
 
             // Page Headers for TCPDF driver ( this is the default )
             if ( $reportico->pdf_engine == "tcpdf" )
-            {
+            {   
+                $param=get_reportico_session_param("user_parameters");
+                $user=isset($param['User'])?$param['User']." en ":'';
                 // Create Report Title Page Header on every page of PDF
                 //$reportico->create_page_header("H1", 1, "{REPORT_TITLE}{STYLE border-width: 1 0 1 0; margin: 15px 0px 0px 0px; border-color: #000000; font-size: 18; border-style: solid;padding:5px 0px 5px 0px; height:1cm; background-color: #000000; color: #ffffff; text-align: center}" );
                 $reportico->create_page_header("H1", 1, "{REPORT_TITLE}{STYLE font-size: 15; padding:5px 0px 5px 0px; color: #000000; text-align: center}" );
@@ -153,7 +155,7 @@
                 $reportico->set_page_header_attribute("H3", "justify", "right" );
 
                 // Create Page No on bottom of PDF page
-                $reportico->create_page_footer("F1", 2, "Impreso por: Sistema de Gestión Financiera - TIKE {STYLE border-width: 1 0 0 0; margin: 40 0 0 0; font-size: 8; text-align: left; font-style: italic; }" );
+                $reportico->create_page_footer("F1", 2, "Impreso por: ".$user." Sistema de Gestión Financiera - TIKE {STYLE border-width: 1 0 0 0; margin: 40 0 0 0; font-size: 8; text-align: left; font-style: italic; }" );
                 $reportico->create_page_footer("F2", 2, "Página: {PAGE}{STYLE border-width: 1 0 0 0; margin: 40 0 0 0; font-style: italic; }" );
                 $reportico->create_page_footer("F3", 2, "Fuente de datos: Sistema Sicapital {STYLE border-width: 1 0 0 0; margin: 40 0 0 0; font-size: 8; text-align: right; font-style: italic; }" );
             }

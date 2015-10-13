@@ -37,8 +37,6 @@ class Sql extends \Sql {
 			break;
                     
                         case "consultarUsuarios":
-                                
-                                
                             
 				$cadenaSql = "SELECT DISTINCT ";
                             	$cadenaSql .= " usu.id_usuario, ";
@@ -98,6 +96,9 @@ class Sql extends \Sql {
                                 $cadenaSql .= "INNER JOIN ".$prefijo."estado_registro est ";
                                 $cadenaSql .= "ON est.estado_registro_id=sist.estado ";
                             	$cadenaSql .= "WHERE sist.id_usuario='".$variable['id_usuario']."'";
+                                if(isset($variable['subsistema']) && $variable['subsistema']>0)
+                                      { $cadenaSql .= " AND ";
+                                        $cadenaSql .= " sist.id_subsistema='".$variable['subsistema']."' "; }
                                   if(isset($variable['rol_id']))
                                       {$cadenaSql .= " AND rol.rol_id ='".$variable['rol_id']."'"; }
                                   if(isset($variable['tipo']) && $variable['tipo']=='unico')
@@ -165,9 +166,11 @@ class Sql extends \Sql {
                                 $cadenaSql .= "  FROM ".$prefijo."rol rol ";
                                     $cadenaSql .= "INNER JOIN  ".$prefijo."rol_subsistema sub  ";
                                     $cadenaSql .= "ON rol.\"rol_id\"=sub.\"rol_id\"  ";
-                                    $cadenaSql .= "AND rol.estado_registro_id='1' ";
+                                $cadenaSql .= " WHERE ";
+                                $cadenaSql .= "sub.estado='1' ";
+                                    
                             if(isset($variable['subsistema']) && $variable['subsistema']>0)
-                                { $cadenaSql .= " WHERE ";
+                                { $cadenaSql .= " AND ";
                                   $cadenaSql .= " sub.id_subsistema='".$variable['subsistema']."' "; 
                                   if(isset($variable['roles']))
                                       {$cadenaSql .= " AND rol.rol_id NOT IN (".$variable['roles'].")"; 

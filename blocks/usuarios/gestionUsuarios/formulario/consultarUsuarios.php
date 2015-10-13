@@ -141,11 +141,11 @@ class consultarForm {
                                     <th>Correo</th>
                                     <th>Teléfono</th>
                                     <th>Usuario</th>
-                                    <th>Perfil</th>
+                                    <th>Roles</th>
                                     <th>Estado</th>
                                     <th>Tipo Usuario</th>
                                     <th>Editar</th>
-                                    <th>Actualizar Perfil</th>
+                                    <th>Actualizar Roles</th>
                                     <th>Actualizar Estado</th>
                                     <th>Eliminar</th>
                                 </tr>

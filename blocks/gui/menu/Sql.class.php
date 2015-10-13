@@ -99,10 +99,10 @@ class Sqlmenu extends sql {
                 if(isset($variable['tipo']) && $variable['tipo']=='caduco')
                     {$cadena_sql.= " perfil.id_subsistema cod_app, ";
                      $cadena_sql.= " sub.etiketa app, ";
+                     $cadena_sql.= " perfil.fecha_caduca fecha_caduca, ";
                     }
                 $cadena_sql.= " perfil.rol_id cod_rol, ";
                 $cadena_sql.= " rol.rol_alias rol, ";
-                $cadena_sql.= " perfil.fecha_caduca fecha_caduca, ";
                 $cadena_sql.= " perfil.estado estado ";
                 $cadena_sql.= " FROM ".$prefijo."usuario_subsistema perfil ";
                 $cadena_sql.= " INNER JOIN ".$prefijo."rol rol  ";
@@ -113,7 +113,9 @@ class Sqlmenu extends sql {
                 $cadena_sql.= " WHERE ";
                 $cadena_sql.= " id_usuario='" . $variable['id_usuario']  . "' ";
                 if(isset($variable['tipo']) && $variable['tipo']=='activo')
-                    {$cadena_sql.= " AND perfil.estado=1 ";}
+                    {$cadena_sql.= " AND perfil.estado=1 ";
+                     $cadena_sql.= " AND perfil.fecha_caduca >= current_date ";
+                    }
                 if(isset($variable['tipo']) && $variable['tipo']=='inactivo')
                     {$cadena_sql.= " AND perfil.estado=0 ";}
                 if(isset($variable['tipo']) && $variable['tipo']=='caduco')

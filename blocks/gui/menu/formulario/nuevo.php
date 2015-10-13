@@ -56,12 +56,19 @@ if($reg_menu)
                { $host=$reg_menu[$key]['url_host_enlace'];}
          else  { $host=$directorio;}      
 
-         $enlaceServ['URL']="pagina=" .$reg_menu[$key]['pagina_enlace'];
-         $enlaceServ['URL'].= "&usuario=" . $id_usuario;      
-         $enlaceServ['URL'].=$reg_menu[$key]['parametros'];
-         $enlaceServ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceServ['URL'], $host);   
-
-         $mMenu[$reg_menu[$key]['menu']][$reg_menu[$key]['grupo']][$reg_menu[$key]['enlace']]=array('urlCodificada'=>$enlaceServ['urlCodificada']);    
+         if(isset($reg_menu[$key]['pagina_enlace']) && $reg_menu[$key]['pagina_enlace']!='')
+               {  $enlaceServ['URL']="pagina=" .$reg_menu[$key]['pagina_enlace'];
+                  $enlaceServ['URL'].= "&usuario=" . $id_usuario;      
+                  $enlaceServ['URL'].=$reg_menu[$key]['parametros'];
+                  $enlaceServ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceServ['URL'], $host);   
+                  $enlaceServ['tab']='';
+               }
+         else  { 
+                  $enlaceServ['urlCodificada'] = $host.$reg_menu[$key]['parametros']; 
+                  $enlaceServ['tab']=$reg_menu[$key]['enlace'];
+               }      
+         
+         $mMenu[$reg_menu[$key]['menu']][$reg_menu[$key]['grupo']][$reg_menu[$key]['enlace']]=array('urlCodificada'=>$enlaceServ['urlCodificada'],'tab'=>$enlaceServ['tab']);    
          unset($enlaceServ);
 
         }
@@ -123,9 +130,14 @@ $enlaceFinSesion['nombre'] = "Cerrar Sesión";
                               <h4><?php echo $gkey;?></h4>
                                 <ul>
                             <?php foreach ($grupos as $skey => $service) 
-                                    { ?>
-                                     <li><a href="<?php echo $grupos[$skey]['urlCodificada'] ?>"><?php echo $skey ?></a></li>
-                            <?php   } ?>                                 
+                                    { if(isset($grupos[$skey]['tab']) && $grupos[$skey]['tab']!='')
+                                          {?>
+                                           <li><a href="#" onclick=javascript:window.open('<?php echo $grupos[$skey]['urlCodificada'] ?>','<?php echo $grupos[$skey]['tab'] ?>','resizable','status','menubar','width=850','height=400','scrollbars') ><?php echo $skey; ?></a></li>
+                            <?php         }
+                                      else{?>
+                                          <li><a href="<?php echo $grupos[$skey]['urlCodificada'] ?>"><?php echo $skey; ?></a></li>
+                            <?php         }
+                                    } ?>                                 
                                 </ul>
                             </div>
                   <?php } ?>
