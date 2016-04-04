@@ -38,6 +38,65 @@ class Redireccionador {
                 $variable = 'pagina=indexAlmacen';
                 $variable .= '&registro=' . $valor [0];
                 break;
+            
+            case "claveCambiada" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&nombre=" . $valor['nombre'];
+                break;
+            
+            case "claveNoCambiada" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&nombre=" . $valor['nombre'];
+                break;
+            
+            case "correoEnviado" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&correo=" . $valor['correo'];
+                break;
+            
+            case "correoNoEnviado" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&correo=" . $valor['correo'];
+                break;
+            
+            case "usuarioInexistente" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                break;
+            
+            case "usuarioInactivo" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&usuario=" . $valor['usuario'];
+                break;
+            
+            case "linkCaducado" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                $variable .= "&fecha=".$valor['fecha'];
+                break;
+            
+            case "claveNoCoincide" :
+                $variable = 'pagina=' . $miPaginaActual;
+                $variable .= "&opcion=mensaje";
+                $variable .= "&mensaje=$opcion";
+                break;
+            
+//            case "recuperarClave":
+//                $variable = 'pagina='.$miPaginaActual;
+//                $variable .= '&opcion=' . $valor;
+//                break;
 
 
             /** Otros casos */

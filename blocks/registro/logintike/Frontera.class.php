@@ -56,7 +56,32 @@ class Frontera {
     function html() {
         //Como se tiene un solo formulario no es necesario un switch para cargarlo:
         $this->ruta=$this->miConfigurador->getVariableConfiguracion("rutaBloque");
-        include_once ($this->ruta . "/formulario/formLogin.php");
+        
+        $this->miFormulario = new \FormularioHtml ();
+		
+        if (isset ( $_REQUEST ['opcion'] )) {
+            switch ($_REQUEST ['opcion']) {
+
+                case "recuperarClave" :
+                    include_once ($this->ruta . "/formulario/recuperarClaveForm.php");
+                    break;
+                
+                case "cambiarClave" :
+                    include_once ($this->ruta . "/formulario/cambiarClaveForm.php");
+                    break;
+                
+                case "mensaje" :
+                    include_once ($this->ruta . "/formulario/mensaje.php");
+                    break;
+                
+                case 'paginaPrincipal':
+                    include_once ($this->ruta . "/formulario/formLogin.php");
+                    break;
+            }
+        } else {
+            $_REQUEST ['opcion'] = "login";
+            include_once ($this->ruta . "/formulario/formLogin.php");
+        }
         
     }
 

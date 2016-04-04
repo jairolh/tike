@@ -100,6 +100,32 @@ class Formulario {
                 echo $this->miFormulario->division("inicio", $atributos);
                 unset($atributos);
 
+                
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                $variable = "pagina=" . $this->miConfigurador->getVariableConfiguracion('pagina');
+                $variable .= "&opcion=" . "recuperarClave";
+                $variable .= "&bloque=" . $esteBloque ['nombre'];
+                $variable .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+                $variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url( $variable );
+                
+                //echo "<a  href=index.php?data" . $variable . ">".$this->lenguaje->getCadena("recuperarClave")."</a>";
+
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                $esteCampo = 'recuperarClave';
+                $atributos ['id'] = $esteCampo;
+                $atributos ['enlace'] = "index.php?".$this->miConfigurador->getVariableConfiguracion('enlace').$variable;
+                $atributos ['tabIndex'] = 1;
+                $atributos ['enlaceTexto'] = $this->lenguaje->getCadena ( $esteCampo );
+                $atributos ['estilo'] = 'textoPequenno textoGris textoNegrita';
+                $atributos ['enlaceImagen'] = $rutaBloque."/images/player_rew.png";
+                $atributos ['posicionImagen'] = "";//"atras";//"adelante";
+                $atributos ['ancho'] = '30px';
+                $atributos ['alto'] = '30px';
+                $atributos ['redirLugar'] = true;
+                echo $this->miFormulario->enlace ( $atributos );
+                unset ( $atributos );                
+                
+                
                 $esteCampo = 'usuario';
                 $atributos ['id'] = $esteCampo;
                 $atributos ['nombre'] = $esteCampo;
@@ -183,9 +209,25 @@ class Formulario {
                 $atributos = array_merge($atributos, $atributosGlobales);
                 echo $this->miFormulario->campoBoton($atributos);
                 unset($atributos);
+                echo "<br><br>";
+
+
+                //--------------------Fin CONTROL: Botón---------------------------------
 
                 // ------------------Fin Division para los botones-------------------------
                 echo $this->miFormulario->division("fin");
+                
+                
+//                // ------------------Inicio Division para la ayuda--------------------------
+//                $atributos ["id"] = "ayuda";
+//                $atributos ["estilo"] = "marcoBotones";
+//                echo $this->miFormulario->division("inicio", $atributos);
+//                
+//                unset($atributos);
+//                
+//                
+//                echo $this->miFormulario->division("fin");
+//                // ------------------Fin Division para la ayuda----------------------------
 
                 // Paso 1: crear el listado de variables
 

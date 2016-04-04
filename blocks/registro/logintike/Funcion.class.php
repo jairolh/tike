@@ -43,9 +43,16 @@ class Funcion {
         include_once ($this->ruta . "funcion/finSesion.php");
     }
     
+    function enviarMensaje() {
+        include_once ($this->ruta . "funcion/enviarMensaje.php");
+    }
+    
+    function cambiarClave() {
+        include_once ($this->ruta . "funcion/cambiarClave.php");
+    }
+    
     function action() {
         $resultado = true;
-        
         // Aquí se coloca el código que procesará los diferentes formularios que pertenecen al bloque
         // aunque el código fuente puede ir directamente en este script, para facilitar el mantenimiento
         // se recomienda que aqui solo sea el punto de entrada para incluir otros scripts que estarán
@@ -55,6 +62,7 @@ class Funcion {
         if (isset ( $_REQUEST ['procesarAjax'] )) {
             $this->procesarAjax ();
         } else {
+        
 
             if (isset($_REQUEST['opcion'])) {
                 switch ($_REQUEST ['opcion']) {
@@ -65,6 +73,14 @@ class Funcion {
 
                     case "validarLogin":
                         $resultado = $this->procesarFormulario();
+                        break;
+                    
+                    case "enviarMensaje":
+                        $this->enviarMensaje();
+                        break;
+                    
+                    case 'cambiarClave':
+                        $this->cambiarClave();
                         break;
                 }
             }
@@ -91,6 +107,7 @@ class Funcion {
             $this->miConfigurador->fabricaConexiones->setRecursoDB($conexion,"tabla");
             $this->miRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
         }
+        
     }
     
     public function setRuta($unaRuta) {
