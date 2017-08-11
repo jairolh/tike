@@ -15,6 +15,8 @@ $dropdown_menu = array(
 				"items" => array(
 						array("reportfile" => "reporte_desagregado_nomina.xml", "title" => "Nomina Desagregada"),
 						array("reportfile" => "reporte_retencion_fuente.xml", "title" => "Retención en la Fuente"),
+                                                array("reportfile" => "descuentosNomina.xml", "title" => "Descuentos de Nómina"),
+                                                array("reportfile" => "descuentosNominaPorTercero.xml", "title" => "Descuentos de Nomina por tercero"),
 				)
 		),
 		 

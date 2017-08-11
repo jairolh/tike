@@ -57,7 +57,7 @@ else
 define('SW_DB_DRIVER', SW_DB_TYPE);
 define('SW_DB_USER', 'WSGFINANCIERO');
 define('SW_DB_PASSWORD', 'Galilei_2000apfebjy');
-define('SW_DB_HOST', '10.20.0.4');
+define('SW_DB_HOST', 'academicaproduccion.c8an9arwoaua.us-east-1.rds.amazonaws.com');
 define('SW_DB_DATABASE', 'sudd');
 }
 define('SW_DB_CONNECT_FROM_CONFIG', true);

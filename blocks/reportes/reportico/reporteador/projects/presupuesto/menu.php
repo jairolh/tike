@@ -17,7 +17,9 @@ $dropdown_menu = array(
         	array("reportfile" => "consecutivoDisponibilidades.xml", "title" => "Consecutivos Disponibilidades"),        		
             array("reportfile" => "ordenesPago_anuladas.xml", "title" => "Anulaciones Totales OP"),
             array("reportfile" => "giro_consecutivo.xml", "title" => "Autorización Giro - Consecutivo"),
-        		
+            array("reportfile" => "registrosPresupuestales.xml", "title" => "Registro Presupuestal Consecutivo"),
+            array("reportfile" => "movimientoRubros.xml", "title" => "Movimientos de Rubros"),
+            array("reportfile" => "contratacion.xml", "title" => "Reporte Contratación"),
         )
     ),
      
